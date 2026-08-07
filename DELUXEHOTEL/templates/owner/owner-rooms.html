@@ -1,0 +1,137 @@
+{% extends "owner/owner-base.html" %}
+
+{% block content %}
+
+
+<body class="dashboard-page">
+  <input type="checkbox" id="theme-toggle" class="theme-toggle-input">
+  <div class="dashboard-shell">
+  {% include "owner/extra/navbar.html" %}
+
+    <main class="dashboard-main">
+      <section class="dashboard-topbar admin-page-header">
+        <div>
+          <span>Room management</span>
+          <h1>Rooms</h1>
+          <p>Xonalar holati, narxi va band/bo‘sh bo‘lishini ko‘rish sahifasi.</p>
+        </div>
+        <div class="topbar-actions">
+          <label for="theme-toggle" class="theme-switch" title="Kun/tun rejimi">
+            <span class="sun"><i class="fa-solid fa-sun"></i></span>
+            <span class="moon"><i class="fa-solid fa-moon"></i></span>
+          </label>
+          <a href="{% url 'overview' %}" class="logout-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+        </div>
+      </section>
+
+      <section class="admin-toolbar">
+        <a href="#rooms-list" class="admin-action"><i class="fa-solid fa-bed"></i> Xonalar</a>
+        <a href="#add-room" class="admin-action light"><i class="fa-solid fa-plus"></i> Xona qo‘shish</a>
+        <a href="{% url 'room' %}" class="admin-action light"><i class="fa-solid fa-globe"></i> Saytdagi rooms</a>
+      </section>
+
+      <section class="room-cards" id="rooms-list">
+        {% for room in rooms %}
+        <article class="admin-room-card">
+          <span class="room-number">{{room.room_number}}</span>
+          <h3>{{room.room_name}}</h3>
+          <p>{{room.people}} kishilik, {{room.view}} view</p>
+          <div class="room-meta"><strong>${{room.price}}</strong><span class="status">{{room.status}}</span></div>
+        </article>
+        {% empty %}
+        <p class="muted">Hozircha xonalar qo‘shilmagan.</p>
+        {% endfor %}
+      </section>
+
+      <div class="content-grid two-col room-page-grid">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Xona status jadvali</h2>
+            <a href="#add-room">Qo‘shish</a>
+          </div>
+
+          <table class="booking-table">
+            <thead>
+              <tr>
+                <th>Xona №</th>
+                <th>Turi</th>
+                <th>Narx</th>
+                <th>O‘rin</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for room in rooms %}
+              <tr>
+                <td>{{room.room_number}}</td>
+                <td>{{room.room_type}}</td>
+                <td>${{room.price}}</td>
+                <td>{{room.people}}</td>
+                <td><span class="status">{{room.status}}</span></td>
+              </tr>
+              {% empty %}
+              <tr><td colspan="5">Hozircha xonalar qo‘shilmagan.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel form-panel" id="add-room">
+          <h2>Xona qo‘shish</h2>
+
+          <form class="admin-form" action="" method="post">
+            {% csrf_token %}
+            <label>Xona nomi
+              <input type="text" name="room_name" placeholder="Masalan: VIP Suite" required>
+            </label>
+
+            <div class="form-row">
+              <label>Xona raqami
+                <input type="number" name="room_number" placeholder="501" required>
+              </label>
+              <label>Narx
+                <input type="number" step="0.01" name="price" placeholder="200" required>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>Xona turi
+                <select name="room_type" required>
+                  {% for room_type in room_types %}
+                  <option value="{{room_type.pk}}">{{room_type.room_type}}</option>
+                  {% endfor %}
+                </select>
+              </label>
+              <label>Sig‘imi (kishi)
+                <input type="number" name="people" value="1" min="1" required>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>Maydon (m²)
+                <input type="number" name="size" placeholder="25" required>
+              </label>
+              <label>Ko‘rinish
+                <input type="text" name="view" placeholder="Sea view" required>
+              </label>
+              <label>Karavotlar soni
+                <input type="number" name="bed" placeholder="1" required>
+              </label>
+            </div>
+
+            <label>Status
+              <select name="status">
+                <option value="Avaible">Available</option>
+                <option value="Booked">Booked</option>
+                <option value="Cleaning">Cleaning</option>
+                <option value="Closed">Closed</option>
+              </select>
+            </label>
+
+            <button type="submit" class="login-btn">Xona qo‘shish</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+{% endblock %}

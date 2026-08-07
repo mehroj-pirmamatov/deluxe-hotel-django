@@ -1,0 +1,163 @@
+@media (max-width: 1100px) {
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .welcome-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-image img {
+    height: 430px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .instagram-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    top: 86px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: none;
+  }
+
+  #menu-toggle:checked~.nav {
+    display: block;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 15px;
+  }
+
+  .nav__list li {
+    width: 100%;
+  }
+
+  .nav__list a {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .about-hero {
+    min-height: 700px;
+  }
+
+  .hero-content h1 {
+    font-size: 44px;
+  }
+
+  .welcome,
+  .services {
+    padding: 70px 0;
+  }
+
+  .welcome-content h2 {
+    font-size: 38px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .instagram-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .header__wrapper {
+    min-height: 74px;
+  }
+
+  .logo {
+    font-size: 27px;
+  }
+
+  .nav {
+    top: 74px;
+  }
+
+  .about-hero {
+    min-height: 760px;
+  }
+
+  .hero-content h1 {
+    font-size: 34px;
+  }
+
+  .hero-subtitle {
+    font-size: 11px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-box {
+    padding: 22px 16px;
+  }
+
+  .stat-box h3 {
+    font-size: 30px;
+  }
+
+  .video-btn {
+    width: 64px;
+    height: 64px;
+    font-size: 18px;
+  }
+
+  .welcome-image img {
+    height: 290px;
+  }
+
+  .welcome-content h2 {
+    font-size: 30px;
+  }
+
+  .service-card {
+    padding: 30px 18px;
+  }
+
+  .service-card h3 {
+    font-size: 24px;
+  }
+
+  .instagram h2 {
+    font-size: 32px;
+  }
+
+  .instagram-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .instagram-grid img {
+    height: 220px;
+  }
+}

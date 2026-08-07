@@ -1,0 +1,82 @@
+{% extends "base.html" %} {% load static%} {% block extra_css%}
+<link rel="stylesheet" href="{% static 'style/contact.css'%}" />
+<link rel="stylesheet" href="{% static 'style/contact-media.css'%}" />
+{%endblock%} 
+{% block content %}
+<section class="contact-hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="hero-subtitle">HOME &nbsp; &gt; &nbsp; CONTACT</p>
+    <h1>Contact Us</h1>
+  </div>
+</section>
+
+<!-- info cards -->
+<section class="contact-info">
+  <div class="container">
+    <div class="contact-info-grid">
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <h3>Address</h3>
+        <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+        <h3>Phone</h3>
+        <p>+ 1235 2355 98</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+        <h3>Email</h3>
+        <p>info@yoursite.com</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3>Website</h3>
+        <p>yoursite.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- form + map -->
+<section class="contact-main">
+  <div class="container contact-main__wrapper">
+    <div class="contact-form-box">
+      <span class="section-subtitle">Get In Touch</span>
+      <h2>Send Us A Message</h2>
+
+      <form method="POST" class="contact-form">
+        {% csrf_token %}
+
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" name="full_name" />
+          <input type="email" placeholder="Your Email" name="email" />
+        </div>
+
+        <div class="form-row">
+          <input type="text" placeholder="Subject" name="subject" />
+          <input type="text" placeholder="Phone" name="phone" />
+        </div>
+
+        <textarea placeholder="Write your message here..." name="description"></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div class="contact-map-box">
+      <iframe
+        src="{{location}}"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+      </iframe>
+    </div>
+  </div>
+</section>
+{% endblock %}

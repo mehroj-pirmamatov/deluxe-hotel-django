@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load static%} {% block extra_css%}
+  <link rel="stylesheet" href="{% static 'style/blog-single-media.css'%}" />
+  <link rel="stylesheet" href="{% static 'style/footer.css'%}" />
+
+{%endblock%}
+
+{% block content %}
+
+  <!-- hero -->
+  <section class="blog-hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="hero-subtitle">HOME &nbsp; &gt; &nbsp; BLOG</p>
+      <h1>Blog</h1>
+    </div>
+  </section>
+
+  <!-- blog -->
+  <section class="blog-section">
+    <div class="container">
+      <div class="blog-grid">
+        {% for blog in blogs %}
+        <a href="{% url 'blog-single' blog.pk %}">
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="{{blog.image.url}}" alt="Blog image">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span>{{blog.created_at|date}}</span>
+            </div>
+            <h3>{{blog.title}}</h3>
+          </div>
+        </article>
+        </a>
+        {% endfor %}
+      </div>
+
+      <div class="pagination">
+        <a href="#"><i class="fa-solid fa-angle-left"></i></a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#"><i class="fa-solid fa-angle-right"></i></a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

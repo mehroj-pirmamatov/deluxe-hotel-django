@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% load static%} {% block extra_css%}
+<link rel="stylesheet" href="{% static 'style/booking.css'%}" />
+<link rel="stylesheet" href="{% static 'style/footer.css'%}" />
+{%endblock%} 
+{% block content %}
+<section class="contact-hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="hero-subtitle">HOME &nbsp; &gt; &nbsp; BOOKING</p>
+    <h1>BOOKING</h1>
+  </div>
+</section>
+
+
+
+<!-- form + map -->
+<section class="contact-main">
+  <div class="container contact-main__wrapper">
+    <div class="contact-form-box">
+      <span class="section-subtitle">Get In Touch</span>
+      <h2>Send Us A Message</h2>
+
+      <form method="POST" class="contact-form">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div class="contact-map-box">
+      <iframe
+        src="https://www.google.com/maps?q=New%20York&z=12&output=embed"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+      </iframe>
+    </div>
+  </div>
+</section>
+{% endblock %}

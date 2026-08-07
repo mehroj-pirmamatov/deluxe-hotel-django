@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% load static%} {% block extra_css%}
+  <link rel="stylesheet" href="{% static 'style/blog-single-media.css'%}" />
+  <link rel="stylesheet" href="{% static 'style/blog-single-media.css'%}" />
+  <link rel="stylesheet" href="{% static 'style/footer.css'%}" />
+{%endblock%}
+
+{% block content %}
+
+
+  <!-- HERO START -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="container hero-content">
+      <p class="breadcrumb">
+        <a href="#">Home</a>
+        <span>/</span>
+        <a href="#">Blog</a>
+        <span>/</span>
+        <span>Blog Single</span>
+      </p>
+      <h1>Blog Single</h1>
+    </div>
+  </section>
+  <!-- HERO END -->
+
+  <!-- BLOG CONTENT START -->
+  <main class="blog-page section-space">
+    <div class="container blog-layout">
+
+      <!-- LEFT CONTENT -->
+      <article class="blog-main">
+        <div class="post-card">
+          <span class="post-label">HOTEL BLOG</span>
+          <h2>{{blog_single.title}}</h2>
+          <div class="post-meta">
+            <span><i class="ri-calendar-2-line"></i>{{blog_single.created_at| date}}</span>
+          </div>
+
+          <p>
+            {{blog_single.description}}
+          </p>
+
+          <img src="{{ blog_single.image.url}}" alt="Blog image" class="post-main-image" />
+
+          <h3>{{blog_single.title}}</h3>
+
+          <div class="post-tags">
+            <a href="#">Life</a>
+            <a href="#">Sport</a>
+            <a href="#">Tech</a>
+            <a href="#">Travel</a>
+          </div>
+        </div>
+
+        <!-- AUTHOR BOX -->
+        <div class="author-box card-space">
+          <img src="https://picsum.photos/160/160?random=31" alt="Author" />
+          <div class="author-info">
+            <h4>Lance Smith</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
+              itaque, autem necessitatibus voluptate quod mollitia delectus aut,
+              sunt placeat nam vero culpa sapiente consectetur similique.
+            </p>
+          </div>
+        </div>
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <h3>Categories</h3>
+          <ul class="category-list">
+            <li><a href="#">Properties <span>(12)</span></a></li>
+            <li><a href="#">Home <span>(22)</span></a></li>
+            <li><a href="#">House <span>(37)</span></a></li>
+            <li><a href="#">Villa <span>(42)</span></a></li>
+            <li><a href="#">Apartment <span>(14)</span></a></li>
+            <li><a href="#">Condominium <span>(140)</span></a></li>
+          </ul>
+        </div>
+        <div class="sidebar-box">
+          <h3>Recent Blog</h3>
+
+      {% for blog in blogs|slice:"4" %}
+          <div class="recent-post">
+            <img src="{{blog.image.url}}" alt="Recent post" />
+            <div>
+              <h4>{{blog.title}}</h4>
+              <p>{{blog.created_at|date}}</p>
+            </div>
+          </div>
+      {% endfor %}
+        </div>
+
+
+        <div class="sidebar-box">
+          <h3>Tag Cloud</h3>
+          <div class="tag-cloud">
+            <a href="#">dish</a>
+            <a href="#">menu</a>
+            <a href="#">food</a>
+            <a href="#">sweet</a>
+            <a href="#">tasty</a>
+            <a href="#">delicious</a>
+            <a href="#">desserts</a>
+            <a href="#">drinks</a>
+          </div>
+        </div>
+
+        <div class="sidebar-box">
+          <h3>Paragraph</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
+            itaque, autem necessitatibus voluptate quod mollitia delectus aut,
+            sunt placeat nam vero culpa sapiente consectetur similique.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <!-- BLOG CONTENT END -->
+{% endblock%}

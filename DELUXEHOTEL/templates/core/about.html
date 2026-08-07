@@ -1,0 +1,236 @@
+{% load static%}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deluxe About</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    {% block extra_css%}
+    <link rel="stylesheet" href="{% static 'style/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'style/media.css'%}" />
+    <link rel="stylesheet" href="{% static 'style/footer.css'%}" />
+    {%endblock%}
+  </head>
+
+  <body>
+    <!-- header -->
+    <header class="header">
+      <div class="container header__wrapper">
+        <a href="{% url 'index' %}" class="logo">Deluxe</a>
+
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">
+          <i class="fa-solid fa-bars"></i>
+        </label>
+
+        <nav class="nav">
+          <ul class="nav__list">
+            <li><a href="{% url 'index'%}">Home</a></li>
+            <li><a href="{% url 'room'%}">Rooms</a></li>
+            <li><a href="{% url 'restaurant' %}">Restaurant</a></li>
+            <li><a href="{% url 'about'%}" class="active">About</a></li>
+            <li><a href="{% url 'blog' %}">Blog</a></li>
+            <li><a href="{% url 'contact'%}">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- hero -->
+    <section class="about-hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <p class="hero-subtitle">HOME &nbsp; &gt; &nbsp; ABOUT</p>
+        <h1>About Us</h1>
+
+        <div class="hero-stats">
+          <div class="stat-box">
+            <h3>500+</h3>
+            <p>Happy Guests</p>
+          </div>
+          <div class="stat-box">
+            <h3>42</h3>
+            <p>Rooms</p>
+          </div>
+          <div class="stat-box">
+            <h3>35</h3>
+            <p>Staffs</p>
+          </div>
+          <div class="stat-box">
+            <h3>8</h3>
+            <p>Destination</p>
+          </div>
+        </div>
+
+        <a href="#" class="video-btn">
+          <i class="fa-solid fa-play"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- welcome -->
+    <section class="welcome">
+      <div class="container welcome-wrapper">
+        <div class="welcome-image">
+          <img
+            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
+            alt="Hotel"
+          />
+        </div>
+
+        <div class="welcome-content">
+          <span class="section-subtitle">Welcome to Deluxe Hotel</span>
+          <h2>Welcome To Our Hotel</h2>
+          <p>
+            On her way she met a copy. The copy warned the Little Blind Text,
+            that where it came from it would have been rewritten a thousand
+            times and everything that was left from its origin would be the word
+            “and”.
+          </p>
+          <p>
+            But nothing the copy said could convince her and so it didn’t take
+            long until a few insidious Copy Writers ambushed her, made her drunk
+            with Longe and Parole and dragged her into their agency.
+          </p>
+          <p>
+            When she reached the first hills of the Italic Mountains, she had a
+            last view back on the skyline of her hometown Bookmarksgrove, the
+            headline of Alphabet Village and the subline of her own road.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- services -->
+    <section class="services">
+      <div class="container">
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-bell-concierge"></i>
+            </div>
+            <h3>25/7 Front Desk</h3>
+            <p>A small river named Duden flows by their place and supplies.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <h3>Restaurant Bar</h3>
+            <p>A small river named Duden flows by their place and supplies.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-car-side"></i>
+            </div>
+            <h3>Transfer Services</h3>
+            <p>A small river named Duden flows by their place and supplies.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-spa"></i>
+            </div>
+            <h3>Spa Suites</h3>
+            <p>A small river named Duden flows by their place and supplies.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- instagram -->
+    <section class="instagram">
+      <div class="container">
+        <h2>Instagram</h2>
+        <div class="instagram-grid">
+          <img
+            src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80"
+            alt=""
+          />
+          <img
+            src="https://images.unsplash.com/photo-1505692952047-1a78307da8f2?auto=format&fit=crop&w=700&q=80"
+            alt=""
+          />
+          <img
+            src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=700&q=80"
+            alt=""
+          />
+          <img
+            src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=700&q=80"
+            alt=""
+          />
+          <img
+            src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=700&q=80"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <h3>Deluxe Hotel</h3>
+          <p>
+            Far far away, behind the word mountains, far from the countries
+            Vokalia and Consonantia, there live the blind texts.
+          </p>
+          <div class="socials">
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Useful Links</h3>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Rooms</a></li>
+            <li><a href="#">Amenities</a></li>
+            <li><a href="#">Gift Card</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Privacy</h3>
+          <ul>
+            <li><a href="#">Career</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Services</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Have a Questions?</h3>
+          <ul class="contact-info">
+            <li>203 Fake St. Mountain View, San Francisco, California, USA</li>
+            <li>+2 392 3929 210</li>
+            <li>info@yourdomain.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright © All rights reserved | This template is made with love</p>
+      </div>
+    </footer>
+  </body>
+</html>
+

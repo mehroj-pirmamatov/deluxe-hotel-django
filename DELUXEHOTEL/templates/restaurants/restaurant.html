@@ -1,0 +1,106 @@
+{% extends "base.html" %} 
+{% load static%} 
+{% block extra_css%}
+<link rel="stylesheet" href="{% static 'style/restarant.css'%}" />
+{%endblock%} {% block content %} {% comment %}
+<link rel="stylesheet" href="{% static 'style/media.css'%}" /> {% endcomment %}
+<!-- hero -->
+<section class="restaurant-hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="hero-subtitle">HOME &nbsp; &gt; &nbsp; RESTAURANTS</p>
+    <h1>Restaurants</h1>
+  </div>
+</section>
+
+<!-- about restaurant -->
+<section class="restaurant-about">
+  <div class="container about-wrapper">
+    <div class="about-image">
+      <img
+        src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80"
+        alt="Restaurant interior"
+      />
+    </div>
+
+    <div class="about-content">
+      <span class="section-subtitle">Our Restaurants</span>
+      <h2>We Are Food Lover</h2>
+      <p>
+        On her way she met a copy. The copy warned the Little Blind Text, that
+        where it came from it would have been rewritten a thousand times.
+      </p>
+      <p>
+        When she reached the first hills of the Italic Mountains, she had a last
+        view back on the skyline of her hometown Bookmarksgrove, the headline of
+        Alphabet Village and the subline of her own road, the Line Lane.
+      </p>
+      <p>
+        On her way she met a copy. The copy warned the Little Blind Text, that
+        where it came from it would have been rewritten a thousand times.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- menu -->
+<section class="menu-section">
+  <div class="container">
+    <div class="section-title">
+      <span>Our Menu</span>
+      <h2>Delicious Food Menu</h2>
+    </div>
+
+    <div class="menu-grid">
+      {% for menu in menues %}
+      <article class="menu-item">
+        <img
+          src="{{menu.image.url}}"
+          alt="{{menu.title}}"
+        />
+        <div class="menu-item__content">
+          <div class="menu-top">
+            <h3>{{menu.title}}</h3>
+            <span class="price">${{menu.price}}</span>
+          </div>
+          <p>{{menu.description}}</p>
+        </div>
+      </article>
+      {% empty %}
+      <p class="muted">Hozircha menyu qo‘shilmagan.</p>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<!-- instagram -->
+<section class="instagram">
+  <div class="container">
+    <h2>Instagram</h2>
+    <div class="instagram-grid">
+      <img
+        src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=700&q=80"
+        alt=""
+      />
+      <img
+        src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=700&q=80"
+        alt=""
+      />
+      <img
+        src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=700&q=80"
+        alt=""
+      />
+      <img
+        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=700&q=80"
+        alt=""
+      />
+      <img
+        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=700&q=80"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+
+{% endblock%}

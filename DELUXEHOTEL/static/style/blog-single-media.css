@@ -1,0 +1,183 @@
+@media (max-width: 1199px) {
+  .hero h1 {
+    font-size: 54px;
+  }
+
+  .post-card h2 {
+    font-size: 36px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    order: 2;
+  }
+
+  .blog-main {
+    order: 1;
+  }
+
+  .hero {
+    min-height: 400px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+
+  .reply-1,
+  .reply-2 {
+    margin-left: 40px;
+  }
+
+  .author-box {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding: 18px 0;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 72px;
+    left: 15px;
+    right: 15px;
+    background: #111111;
+    border-radius: 12px;
+    padding: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.3s;
+  }
+
+  #menu-toggle:checked+.menu-btn+.navbar {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .hero {
+    min-height: 340px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .section-space {
+    padding: 75px 0;
+  }
+
+  .post-card h2 {
+    font-size: 30px;
+  }
+
+  .post-card h3,
+  .comments h3,
+  .comment-form-section h3,
+  .sidebar-box h3 {
+    font-size: 26px;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-grid img {
+    height: 230px;
+  }
+
+  .author-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .comment-item {
+    flex-direction: column;
+  }
+
+  .comment-item img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .reply-1,
+  .reply-2 {
+    margin-left: 0;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .logo {
+    font-size: 28px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+  }
+
+  .post-card h2 {
+    font-size: 26px;
+  }
+
+  .post-meta {
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .comment-form {
+    padding: 20px;
+  }
+
+  .sidebar-box {
+    padding: 22px 18px;
+  }
+
+  .recent-post {
+    flex-direction: column;
+  }
+
+  .recent-post img {
+    width: 100%;
+    height: 170px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}

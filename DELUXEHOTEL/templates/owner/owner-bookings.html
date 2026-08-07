@@ -1,0 +1,102 @@
+{% extends "owner/owner-base.html" %}
+
+{% block content %}
+
+<body class="dashboard-page">
+  <input type="checkbox" id="theme-toggle" class="theme-toggle-input">
+  <div class="dashboard-shell">
+  {% include "owner/extra/navbar.html" %}
+
+    <main class="dashboard-main">
+      <section class="dashboard-topbar admin-page-header">
+        <div>
+          <span>Booking management</span>
+          <h1>Bookings</h1>
+          <p>Mehmonlarning band qilgan xonalari, sanasi, narxi va statusini ko‘rish sahifasi.</p>
+        </div>
+        <div class="topbar-actions">
+          <label for="theme-toggle" class="theme-switch" title="Kun/tun rejimi">
+            <span class="sun"><i class="fa-solid fa-sun"></i></span>
+            <span class="moon"><i class="fa-solid fa-moon"></i></span>
+          </label>
+          <a href="{% url 'overview' %}" class="logout-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+        </div>
+      </section>
+
+      <section class="admin-toolbar">
+        <a href="#new-booking" class="admin-action"><i class="fa-solid fa-plus"></i> Yangi booking</a>
+        <a href="#booking-list" class="admin-action light"><i class="fa-solid fa-list"></i> Ro‘yxat</a>
+        <a href="{% url 'owner-room' %}" class="admin-action light"><i class="fa-solid fa-bed"></i> Roomsga o‘tish</a>
+      </section>
+
+      <section class="stats-grid mini-stats">
+        <article class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-calendar-day"></i></div>
+          <p>Bugun</p>
+          <h2>{{today_count}}</h2>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+          <p>Kutilmoqda</p>
+          <h2>{{pending_count}}</h2>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <p>Tasdiqlangan</p>
+          <h2>{{confirmed_count}}</h2>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-ban"></i></div>
+          <p>Bekor qilingan</p>
+          <h2>{{cancelled_count}}</h2>
+        </article>
+      </section>
+
+      <div class="content-grid two-col">
+        <section class="panel" id="booking-list">
+          <div class="panel-head">
+            <h2>Booking ro‘yxati</h2>
+            <a href="#new-booking">Qo‘shish</a>
+          </div>
+
+          <table class="booking-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Mijoz</th>
+                <th>Xona turi</th>
+                <th>Check-in</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for booking in bookings  %}
+              <tr>
+                  <td>{{booking.id}}</td>
+                <td>{{booking.full_name}}</td>
+                <td>{{booking.room}}</td>
+                <td>{{booking.book_time}}</td>
+                <td><span class="status paid">{{booking.status}}</span></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel form-panel" id="new-booking">
+          <h2>Yangi booking formasi</h2>
+          <p class="muted">Bu forma JSsiz ko'rinish uchun qo'shildi. Haqiqiy saqlash uchun backend kerak.</p>
+
+          <form class="admin-form"  method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            
+
+            <button type="submit" class="login-btn">Formani yuborish</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+{% endblock %}

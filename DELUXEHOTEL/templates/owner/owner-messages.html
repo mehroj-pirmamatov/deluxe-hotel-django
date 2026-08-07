@@ -1,0 +1,73 @@
+{% extends "owner/owner-base.html" %}
+
+    {% load static%} {% block extra_css%}
+    <link rel="stylesheet" href="{% static 'style/admin.css'%}" />
+    <link rel="stylesheet" href="{% static 'style/footer.css'%}" />
+    {% endblock %}
+
+    {% block content %}
+
+  <body class="dashboard-page">
+    <input type="checkbox" id="theme-toggle" class="theme-toggle-input" />
+    <div class="dashboard-shell">
+      {% include "owner/extra/navbar.html" %}
+
+      <main class="dashboard-main">
+        <section class="dashboard-topbar admin-page-header">
+          <div>
+            <span>Guest messages</span>
+            <h1>Messages</h1>
+            <p>
+              Mijozlardan kelgan xabarlarni ko‘rish va javob yozish uchun
+              sahifa.
+            </p>
+          </div>
+          <div class="topbar-actions">
+            <label
+              for="theme-toggle"
+              class="theme-switch"
+              title="Kun/tun rejimi"
+            >
+              <span class="sun"><i class="fa-solid fa-sun"></i></span>
+              <span class="moon"><i class="fa-solid fa-moon"></i></span>
+            </label>
+            <a href="{% url 'overview' %}" class="logout-btn"
+              ><i class="fa-solid fa-arrow-left"></i> Dashboard</a
+            >
+          </div>
+        </section>
+
+        <section class="message-layout">
+          <div class="inbox-list">
+            {% if contacts %}
+              {% for contact in contacts %}
+            <a href="#msg-{{contact.pk}}" class="inbox-item active">
+              <div class="avatar">{{contact.full_name|first|upper}}</div>
+              <div>
+                <strong>{{contact.full_name}}</strong>
+                <p>{{contact.subject}}</p>
+              </div>
+              <span>{{contact.created_at|time}}</span>
+            </a>
+            {% endfor %}
+            {% else %}
+              <div class="inbox-item active">
+                <strong>No Data</strong>
+              </div>
+            {% endif %}
+          </div>
+
+          <section class="panel message-reader">
+            {% for contact in contacts %}
+            <article id="msg-{{contact.pk}}" class="reader-message">
+              <h2>{{contact.full_name}}-{{contact.subject}}</h2>
+              <p class="muted">Email: {{contact.email}}</p>
+              <p> {{contact.description}}</p>
+            </article>
+             {% endfor %}
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+{% endblock %}

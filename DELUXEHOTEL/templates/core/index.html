@@ -1,0 +1,323 @@
+{% extends "base.html" %} {% load static%} 
+
+ {% block extra_css%}
+    <link rel="stylesheet" href="{% static 'style/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'style/footer.css'%}" />
+    {%endblock%}
+
+
+{% block content %}
+
+    <main>
+      <section class="hero">
+        <div class="hero__overlay"></div>
+        <div class="container">
+          <div class="hero__content">
+            <p class="hero__welcome">Welcome To Deluxe</p>
+            <span class="hero__sub">Hotels &amp; Resorts</span>
+            <h1 class="hero__title">Enjoy A Luxury Experience</h1>
+            <a href="#about" class="hero__link">Join With Us</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="about section" id="about">
+        <div class="container">
+          <div class="about__wrapper">
+            <div class="about__images">
+              <img
+                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
+                alt="Hotel exterior"
+                class="about__img about__img--big"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=700&q=80"
+                alt="Pool"
+                class="about__img about__img--small"
+              />
+              <a href="#" class="play-btn"><i class="fa-solid fa-play"></i></a>
+            </div>
+
+            <div class="about__content">
+              <span class="section__sub">Welcome to Deluxe Hotel</span>
+              <h2 class="section__title">Welcome To Our Hotel</h2>
+              <p>
+                On her way she met a copy. The copy warned the Little Blind
+                Text, that where it came from it would have been rewritten a
+                thousand times and everything that was left from its origin
+                would be the word "and".
+              </p>
+              <p>
+                But nothing the copy said could convince her and so it didn’t
+                take long until a few insidious Copy Writers ambushed her, made
+                her drunk with Longe and Parole and dragged her into their
+                agency.
+              </p>
+              <p>
+                When she reached the first hills of the Italic Mountains, she
+                had a last view back on the skyline of her hometown
+                Bookmarksgrove.
+              </p>
+
+              <div class="about__stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="services section">
+        <div class="container">
+          <div class="services__grid">
+            <article class="service">
+              <div class="service__icon">
+                <i class="fa-solid fa-bell-concierge"></i>
+              </div>
+              <h3>25/7 Front Desk</h3>
+              <p>
+                A small river named Duden flows by their place and supplies.
+              </p>
+            </article>
+
+            <article class="service">
+              <div class="service__icon">
+                <i class="fa-solid fa-champagne-glasses"></i>
+              </div>
+              <h3>Restaurant Bar</h3>
+              <p>
+                A small river named Duden flows by their place and supplies.
+              </p>
+            </article>
+
+            <article class="service">
+              <div class="service__icon">
+                <i class="fa-solid fa-car-side"></i>
+              </div>
+              <h3>Transfer Services</h3>
+              <p>
+                A small river named Duden flows by their place and supplies.
+              </p>
+            </article>
+
+            <article class="service">
+              <div class="service__icon">
+                <i class="fa-solid fa-spa"></i>
+              </div>
+              <h3>Spa Suites</h3>
+              <p>
+                A small river named Duden flows by their place and supplies.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rooms section">
+        <div class="container">
+          <div class="section__head">
+            <span class="section__sub">Our Hotel Rooms</span>
+            <h2 class="section__title center">Our Rooms</h2>
+          </div>
+
+          <div class="rooms__grid">
+            {% for room in rooms|slice:"3" %}
+            <article class="room">
+              <div class="room__image">
+                <img
+                  src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80"
+                  alt="{{room.room_name}}"
+                />
+              </div>
+              <div class="room__content">
+                <h3><a href="{% url 'room' %}">{{room.room_name}}</a></h3>
+                <p><span>${{room.price}}</span> per night</p>
+                <div class="room__stars">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                </div>
+                <a href="{% url 'room'%}" class="room__link">View Room Details</a>
+              </div>
+            </article>
+            {% empty %}
+            <p>Hozircha xonalar qo‘shilmagan.</p>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="stats__overlay"></div>
+        <div class="container">
+          <div class="stats__grid">
+            <div class="stat">
+              <h3>25K+</h3>
+              <p>Happy Guests</p>
+            </div>
+            <div class="stat">
+              <h3>60</h3>
+              <p>Rooms</p>
+            </div>
+            <div class="stat">
+              <h3>45</h3>
+              <p>Staffs</p>
+            </div>
+            <div class="stat">
+              <h3>12</h3>
+              <p>Destination</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonial section">
+        <div class="container">
+          <div class="testimonial__grid">
+          </div>
+        </div>
+      </section>
+
+      <section class="blog section" id="blog">
+        <div class="container">
+          <div class="section__head">
+            <span class="section__sub">Latest News</span>
+            <h2 class="section__title center">Recent Blog</h2>
+          </div>
+
+          <div class="blog__grid">
+            {% for blog in blogs|slice:"4" %}
+            <article class="blog__card">
+              <div class="blog__image">
+                <img
+                  src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=900&q=80"
+                  alt="Blog image"
+                />
+              </div>
+              <div class="blog__content">
+                <span class="blog__meta">{{blog.created_at|date}}</span>
+                <h3>
+                  <a href=""{{blog.title}}</a
+                  >
+                </h3>
+              </div>
+            </article>
+
+            <article class="blog__card">
+              <div class="blog__image">
+                <img
+                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                  alt="Blog image"
+                />
+              </div>
+              <div class="blog__content">
+                <span class="blog__meta">Dec 6, 2018 · Admin · 3</span>
+                <h3>
+                  <a href="#"
+                    >Even the all-powerful Pointing has no control about the
+                    blind texts</a
+                  >
+                </h3>
+              </div>
+            </article>
+            {% endfor %}
+
+          </div>
+        </div>
+      </section>
+
+      <section class="instagram section">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title center">Instagram</h2>
+          </div>
+
+          <div class="instagram__grid">
+            <a href="#" class="insta"
+              ><img
+                src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80"
+                alt="Instagram photo"
+            /></a>
+            <a href="#" class="insta"
+              ><img
+                src="https://images.unsplash.com/photo-1444201983204-c43cbd584d93?auto=format&fit=crop&w=700&q=80"
+                alt="Instagram photo"
+            /></a>
+            <a href="#" class="insta"
+              ><img
+                src="https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=700&q=80"
+                alt="Instagram photo"
+            /></a>
+            <a href="#" class="insta"
+              ><img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=700&q=80"
+                alt="Instagram photo"
+            /></a>
+            <a href="#" class="insta"
+              ><img
+                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80"
+                alt="Instagram photo"
+            /></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <h3>Deluxe Hotel</h3>
+            <p>
+              Far far away, behind the word mountains, far from the countries
+              Vokalia and Consonantia, there live the blind texts.
+            </p>
+            <div class="footer__socials">
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+
+          <div class="footer__col">
+            <h3>Useful Links</h3>
+            <ul>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#">Rooms</a></li>
+              <li><a href="#">Amenities</a></li>
+              <li><a href="#">Gift Card</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h3>Privacy</h3>
+            <ul>
+              <li><a href="#">Career</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#footer">Contact Us</a></li>
+              <li><a href="#">Services</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h3>Have a Questions?</h3>
+            <ul>
+              <li>
+                <i class="fa-solid fa-location-dot"></i> 203 Fake St. Mountain
+                View, San Francisco, California, USA
+              </li>
+              <li><i class="fa-solid fa-phone"></i> +2 392 3929 210</li>
+              <li><i class="fa-solid fa-envelope"></i> info@yourdomain.com</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          Copyright © All rights reserved | Deluxe Clone
+        </div>
+      </div>
+    </footer>
+{% endblock %}

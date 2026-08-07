@@ -1,0 +1,95 @@
+{% extends "owner/owner-base.html" %}
+{% block content %}
+
+
+<body class="dashboard-page">
+  <input type="checkbox" id="theme-toggle" class="theme-toggle-input">
+  <div class="dashboard-shell">
+  {% include "owner/extra/navbar.html" %}
+
+    <main class="dashboard-main">
+      <section class="dashboard-topbar" id="overview">
+        <div>
+          <span>Welcome back, Admin</span>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="topbar-actions">
+          <label for="theme-toggle" class="theme-switch" title="Kun/tun rejimi">
+            <span class="sun"><i class="fa-solid fa-sun"></i></span>
+            <span class="moon"><i class="fa-solid fa-moon"></i></span>
+          </label>
+          <a href="{% url 'logout' %}" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Chiqish</a>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <a class="stat-card" href="{% url 'owner_booking' %}">
+          <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <p>Jami booking</p>
+          <h2>{{bookings_count}}</h2>
+        </a>
+
+        <a class="stat-card" href="{% url 'owner-room' %}">
+          <div class="stat-icon"><i class="fa-solid fa-bed"></i></div>
+          <p>Bo‘sh xonalar</p>
+          <h2>{{rooms}}</h2>
+        </a>
+
+        <article class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+          <p>Xabarlar</p>
+          <h2>{{contacts}}</h2>
+        </article>
+
+      <div class="dashboard-grid">
+        <section class="panel" id="bookings">
+          <div class="panel-head">
+            <h2>So‘nggi buyurtmalar</h2>
+            <a href="{% url 'owner_booking' %}">Hammasi</a>
+          </div>
+
+          <table class="booking-table">
+            <thead>
+              <tr>
+                <th>Mijoz</th>
+                <th>Xona</th>
+                <th>Sana</th>
+                <th>Narx</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Madina Soliyeva</td>
+                <td>Family Room</td>
+                <td>06 May</td>
+                <td>$80</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div class="side-stack">
+
+          <section class="message-card" id="messages">
+            <div class="section-link-head">
+              <h3>Yangi xabarlar</h3>
+              <a href="{% url 'owner-contact'%}">Inbox</a>
+            </div>
+
+        {% for contact_info in contact_infos %}
+              <div class="message">
+              <div class="avatar">A</div>
+              <div>
+                <strong>{{contact_info.full_name}}</strong>
+                <p>{{contact_info.subject}}</p>
+              </div>
+              </div>
+        {% endfor %}
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+{% endblock %}
